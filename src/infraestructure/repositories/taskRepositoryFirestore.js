@@ -41,6 +41,12 @@ class TaskRespositoryFirestore extends TaskRespository {
         return { id };
     }
 
+    async findById(id) {
+        const doc = await this.collection.doc(id).get();
+        if (!doc.exists) return null;
+        return { id: doc.id, ...doc.data() };
+    }
+
 }
 
 

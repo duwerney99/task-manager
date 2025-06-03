@@ -3,12 +3,14 @@ const registerTask = require("../../application/services/task/registerTask");
 const findAllTasks = require("../../application/services/task/findAllTasks");
 const updateTaskStatus = require("../../application/services/task/updateTaskStatus");
 const deleteTask = require("../../application/services/task/deleteTask");
+const findById = require("../../application/services/task/findTaskById");
 
 const taskRepository = new TaskRespositoryFirestore();
 const registerTaskService = registerTask(taskRepository);
 const findAllTasksService = findAllTasks(taskRepository);
 const updateTaskStatusService = updateTaskStatus(taskRepository);
 const deleteTaskService = deleteTask(taskRepository);
+const findTaskByIdService = findById(taskRepository);
 
 const taskController = {
     registerTask: async (req, res) => {
@@ -48,11 +50,21 @@ const taskController = {
         try {
             const { id } = req.params;
 
-            const result = await deleteTaskService.execute({ id } );
+            const result = await deleteTaskService.execute({ id });
             res.status(200).json({ message: 'Task deleted', ...result });
         } catch (error) {
             console.error("Error deleting task:", error);
             res.status(400).json({ error: error.message || 'Error deleting task' });
+        }
+    },
+
+    findById: async (req, res) => {
+        try {
+            const { id } = req.params;
+            const task = await findTaskByIdService.execute(id);
+            res.status(200).json(task);
+        } catch (error) {
+            res.status(404).json({ error: error.message });
         }
     }
 };
