@@ -35,6 +35,12 @@ class TaskRespositoryFirestore extends TaskRespository {
         return { id: updated.id, ...updated.data() };
     }
 
+    async deleteTask(id) {
+        const docRef = this.collection.doc(id);
+        await docRef.delete();
+        return { id };
+    }
+
 }
 
 
