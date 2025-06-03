@@ -8,5 +8,18 @@ const taskSchema = Joi.object({
 });
 
 
+const updateTaskStatusSchema = Joi.object({
+    status: Joi.string().valid('completada', 'pendiente').required()
+});
 
-module.exports = { taskSchema };
+const idParamSchema = Joi.object({
+    id: Joi.string().required()
+});
+
+
+
+module.exports = { 
+    taskSchema,
+    updateTaskStatusSchema,
+    idParamSchema
+ };
