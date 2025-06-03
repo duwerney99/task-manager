@@ -1,9 +1,9 @@
 const TaskRespositoryFirestore = require("../../infraestructure/repositories/taskRepositoryFirestore");
-const registerTask = require("../../application/services/task/registerTask");
-const findAllTasks = require("../../application/services/task/findAllTasks");
-const updateTaskStatus = require("../../application/services/task/updateTaskStatus");
-const deleteTask = require("../../application/services/task/deleteTask");
-const findById = require("../../application/services/task/findTaskById");
+const registerTask = require("../../application/services/tasks/registerTask");
+const findAllTasks = require("../../application/services/tasks/findAllTasks");
+const updateTaskStatus = require("../../application/services/tasks/updateTaskStatus");
+const deleteTask = require("../../application/services/tasks/deleteTask");
+const findById = require("../../application/services/tasks/findTaskById");
 
 const taskRepository = new TaskRespositoryFirestore();
 const registerTaskService = registerTask(taskRepository);
