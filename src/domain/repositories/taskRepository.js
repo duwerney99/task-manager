@@ -3,9 +3,14 @@ class TaskRespository {
         throw new Error("Methos not implemented");
     }
 
-    async findAll(){
+    async findAll() {
         throw new Error("Methos not implemented");
     }
+
+    async updateStatus(id, status) {
+        throw new Error("Method not implemented");
+    }
+
 }
 
 

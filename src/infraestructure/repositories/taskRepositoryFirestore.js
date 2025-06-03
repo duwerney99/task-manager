@@ -27,6 +27,14 @@ class TaskRespositoryFirestore extends TaskRespository {
         }));
         return tasks;
     }
+
+    async updateStatus(id, status) {
+        const docRef = this.collection.doc(id);
+        await docRef.update({ status });
+        const updated = await docRef.get();
+        return { id: updated.id, ...updated.data() };
+    }
+
 }
 
 
