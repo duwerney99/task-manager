@@ -31,6 +31,7 @@ Este proyecto es una API RESTful que permite gestionar tareas (CRUD completo), d
 │ └── validators / # Schemas de validacion
 │ └── routes/ # Rutas Express
 ├── main/ # Punto de entrada de la app
+└── test/ # Tests con Jest
 
 
 ## Endpoints
@@ -91,6 +92,20 @@ Ejecuta en desarrollo:
 
 
 
+## Despliegue en Cloud Run (GCP)
+Este backend está desplegado en Cloud Run. Se utilizó:
+
+Google Artifact Registry para alojar la imagen Docker
+
+Variables de entorno para manejar claves  
+
+IAM configurado con permisos roles/datastore.user para la cuenta de servicio
+
+URL del backend (producción):
+https://task-manager-backend-74938929962.us-central1.run.app
+
+
+
 ## Validaciones
 Se usan validaciones con Joi (middleware) para asegurar que los datos enviados a los endpoints cumplan con los requisitos mínimos:
 
@@ -99,6 +114,22 @@ POST /tasks: valida title, description y status
 Otros endpoints también manejan validaciones básicas (por ejemplo, que exista id en los params)
 
 
+##  Testing con Jest
+# Ejecutar tests
+npm test
+
+Se implementaron tests unitarios para los casos de uso principales:
+
+Crear tarea
+
+Listar todas
+
+Buscar por ID
+
+Eliminar
+
+Actualizar estado
+
 
 
 
@@ -106,6 +137,13 @@ Tecnologías utilizadas:
     Node.js + Express
     Firebase Admin SDK (Firestore)
     Joi (validaciones)
+    Jest (testing)
     Clean Architecture
     Dotenv
     Docker
+    Google Cloud Run
+
+
+Duwerney Hernandez
+Correo: santiagohernan99dez@gmail.com
+GitHub: duwerney99
