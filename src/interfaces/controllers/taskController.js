@@ -18,7 +18,7 @@ const taskController = {
             const newTask = await registerTaskService.execute(req.body);
             res.status(201).json(newTask);
         } catch (error) {
-            console.error("Error create task: ", error);
+            console.error("Error create task: ", error.message);
             res.status(500).json({ error: 'Error trying create task ' });
         }
     },
