@@ -1,8 +1,8 @@
 module.exports = (taskRepository) => {
   return {
     execute: async ({ id, status }) => {
-      if (!id || !status) {
-        throw new Error("ID y status are required !!");
+      if (!id) {
+        throw new Error("ID required !!");
       }
 
       if (!['pendiente', 'completada'].includes(status)) {
